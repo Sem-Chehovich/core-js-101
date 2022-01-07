@@ -133,7 +133,7 @@ const cssSelectorBuilder = {
     this.number = 0;
     return obj;
   },
-  
+
   element(value) {
     this.checkNumber(0);
     this.result += value;
