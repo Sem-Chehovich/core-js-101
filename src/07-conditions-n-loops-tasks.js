@@ -178,7 +178,7 @@ function isInsideCircle(circle, point) {
  *   'entente' => null
  */
 function findFirstSingleChar(str) {
-  const arr = str.replaceAll(' ', '').split('');
+  const arr = str.split('').join(' ').split('');
   let res = null;
   arr.forEach((element) => {
     if (arr.indexOf(element) === arr.lastIndexOf(element)) {
@@ -288,8 +288,9 @@ function isCreditCardNumber(/* ccn */) {
  *   10000 ( 1+0+0+0+0 = 1 ) => 1
  *   165536 (1+6+5+5+3+6 = 26,  2+6 = 8) => 8
  */
-function getDigitalRoot(/* num */) {
-  throw new Error('Not implemented');
+function getDigitalRoot(num) {
+  const sum = num.toString().split('').reduce((acc, cur) => +acc + +cur);
+  return sum < 9 ? sum : getDigitalRoot(sum);
 }
 
 
@@ -379,8 +380,19 @@ function getCommonDirectoryPath(/* pathes */) {
  *                         [ 6 ]]
  *
  */
-function getMatrixProduct(/* m1, m2 */) {
-  throw new Error('Not implemented');
+function getMatrixProduct(m1, m2) {
+  const res = [];
+  for (let i = 0; i < m1.length; i += 1) {
+    res[i] = [];
+    for (let j = 0; j < m2[0].length; j += 1) {
+      let sum = 0;
+      for (let l = 0; l < m1[0].length; l += 1) {
+        sum += m1[i][l] * m2[l][j];
+      }
+      res[i][j] = sum;
+    }
+  }
+  return res;
 }
 
 
